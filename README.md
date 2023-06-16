@@ -1,2 +1,2 @@
 # dot-curves
-Created with CodeSandbox
+Created by https://twitter.com/filipeedr
