@@ -1,4 +1,4 @@
-import {readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions';
+import {readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
 import {userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");

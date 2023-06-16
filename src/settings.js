@@ -1,4 +1,4 @@
-import {readRoundSize, readAmplitude, readWaves, readFrequency} from './readFunctions';
+import {readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
 
 export const userSettings = {
   dimensions: [1080, 1080],
