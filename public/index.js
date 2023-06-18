@@ -3215,6 +3215,9 @@ const sketch = ({
       document.getElementById('downloadMessage').classList.toggle('hidden');
     }, 4000);
   });
+  document.getElementById("restartSettings").addEventListener('click', () => {
+    location.reload();
+  });
   return ({
     context,
     width,
@@ -3313,7 +3316,7 @@ exports.userSettings = exports.canvasSettings = void 0;
 var _inputReadFunctions = require("./inputReadFunctions.js");
 const canvasSettings = {
   dimensions: [2160, 2160],
-  encoding: 'image/webp',
+  encoding: 'image/png',
   encodingQuality: 1,
   pixelsPerInch: 300,
   prefix: 'my-durves'

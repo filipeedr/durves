@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>Durves</title>
-  <link rel="stylesheet" href="style.css">
-<body>
-
-  <section class="content">
-
-    <img src="/src/assets/durves-logo.svg" alt="">
-
-    <div class="inputs">
-
-      <div class="inputSlider">
-        <div class="labelSlider">
-          <label>Dot size</label>
-          <label><span id="valueRoundSize"></span></label>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>durves</title>
+    <link rel="icon" type="image/x-icon" href="../src/assets/durves-icon.ico">
+    <link rel="stylesheet" href="../src/style.css">
+  </head>
+  <body>
+      <div class="leftSide">
+        
+        <div class="inputs">
+          <header>
+            <img class="logo" src="../src/assets/durves-logo.svg">
+            <a href="https://github.com/filipeedr/dot-curves" target="_blank"><img class="githubLogo" src="../src/assets/github.svg"></a>
+          </header>
+          <div class="inputSlider">
+            <div class="labelSlider">
+              <div class="label">
+                <img class="inputIcons" src="../src/assets/size.svg">
+                <label>Dot radius</label>
+              </div>
+              <label><span id="valueRoundSize"></span></label>
+            </div>
+            <input type="range" min="1" max="5" step="0.1" value="2.5" id="roundSizeSlider"> 
+          </div>
+          <div class="inputSlider">
+            <div class="labelSlider">
+              <div class="label">
+                <img class="inputIcons" src="../src/assets/amplitude.svg">
+                <label>Amplitude</label>
+              </div>
+              <label><span id="valueAmplitude"></span></label>
+            </div>
+            <input type="range" min="-150" max="150" step="0.1" value="30" id="amplitudeSlider">
+          </div>
+          <div class="inputSlider">
+            <div class="labelSlider">
+              <div class="label">
+                <img class="inputIcons" src="../src/assets/waves.svg">
+                <label>Waves</label>
+              </div>
+              <label><span id="valueWaves"></span></label>
+            </div>
+            <input type="range" min="-10" max="10" step="0.1" value="3" id="wavesSlider">
+          </div>
+          <div class="inputSlider">
+            <div class="labelSlider">
+              <div class="label">
+                <img class="inputIcons" src="../src/assets/frequency.svg">
+                <label>Frequency</label>
+              </div>
+              <label><span id="valueFrequency"></span></label>
+            </div>
+            <input type="range" min="0" max="0.005" step="0.0001" value="0.001" id="frequencySlider">
+          </div>
         </div>
-        <input type="range" min="1" max="5" step="0.1" value="2.5" id="roundSizeSlider"> 
+
+        <footer>
+          <div class="buttons">
+            <button class="iconButton" id="restartSettings"><img src="../src/assets/refresh.svg"></button>
+            <button id="downloadDurves">Download durves' file</button>
+          </div>
+          <div class="credits">
+            <p>Design & Code by <a href="https://twitter.com/filipeedr" target="_blank">Filipe Esteves</a> <img src="../src/assets/heart.svg"></p>
+          </div>
+        </footer>
+        <!-- <div class="downloadMessage hidden" id="downloadMessage">
+            <p>Saved in "Downloads"</p>
+          </div> -->
+      </div>
+      <div class="rightSide">
+        <script src="index.js"></script>
       </div>
 
-      <div class="inputSlider">
-        <div class="labelSlider">
-          <label>Amplitude</label>
-          <label><span id="valueAmplitude"></span></label>
-        </div>
-        <input type="range" min="-150" max="150" step="0.1" value="30" id="amplitudeSlider">
-      </div>
-
-      <div class="inputSlider">
-        <div class="labelSlider">
-          <label>Waves</label>
-          <label><span id="valueWaves"></span></label>
-        </div>
-        <input type="range" min="-10" max="10" step="0.1" value="3" id="wavesSlider">
-      </div>
-
-      <div class="inputSlider">
-        <div class="labelSlider">
-          <label>Frequency</label>
-          <label><span id="valueFrequency"></span></label>
-        </div>
-        <input type="range" min="0" max="0.005" step="0.0001" value="0.001" id="frequencySlider">
-      </div>
- 
-      <button id="downloadDurves">Download Durves</button>
-
-      <div class="downloadMessage hidden" id="downloadMessage">
-        <p>Saved in "Downloads"</p>
-      </div>
-      
-    </div>
-
-    <script src="index.js"></script>
-
-  </section>
-
-</body>
+  </body>
 </html>
-
