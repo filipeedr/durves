@@ -64,23 +64,23 @@ const sketch = ({ width, height, exportFrame }) => {
     canva.update()
   });
 
-  document.getElementById("downloadDurves").addEventListener('click', () => { 
-  
-    exportFrame();
-
-    document.getElementById('downloadMessage').classList.toggle('hidden');
-
-    setTimeout(() => {
-      document.getElementById('downloadMessage').classList.toggle('hidden');
-    }, 4000);
-
-  });
-
   document.getElementById("restartSettings").addEventListener('click', () => { 
     
     location.reload();
 
   });
+
+  // document.getElementById("downloadDurves").addEventListener('click', () => { 
+  
+  //   exportFrame();
+
+  //   document.getElementById('downloadMessage').classList.toggle('hidden');
+
+  //   setTimeout(() => {
+  //     document.getElementById('downloadMessage').classList.toggle('hidden');
+  //   }, 4000);
+
+  // });
  
   return ({ context, width, height }) => {
     context.fillStyle = "black";

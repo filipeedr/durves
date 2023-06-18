@@ -7,17 +7,16 @@ body{
     -webkit-font-smoothing: antialiased;
     margin: 0;
     padding: 0;
+    gap: 8px;
 }
 
 body canvas{
     width: 92vh !important;
     height: 92vh !important;
-    padding-left: calc((100vw) / 10);
-    padding-right: calc((100vw) / 10);
     margin-top: 32px;
     margin-bottom: 32px;
     margin-right: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 
@@ -25,6 +24,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 footer{
@@ -51,7 +51,6 @@ p img{
 .logo {
     width: 100px;
     border-radius: 4px;
-    margin-bottom: 64px;
 }
 
 .leftSide{
@@ -59,11 +58,12 @@ p img{
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    max-width: 390px;
-    margin: 32px;
+    max-width: 340px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     padding: 32px;
     height: auto;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(229, 231, 245, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
@@ -72,7 +72,12 @@ p img{
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 20px
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.inputs:last-child{
+    margin-bottom: 20px;
 }
 
 .label{
@@ -86,7 +91,7 @@ p img{
     display: flex;
     flex-direction: column;
     padding: 16px;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(229, 231, 245, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     gap: 12px;
@@ -121,7 +126,7 @@ p img{
 
 .inputSlider input{
     -webkit-appearance: none;
-    background: rgba(255, 255, 255, 0.07);
+    background-color: rgba(229, 231, 245, 0.07);
     cursor:ew-resize;
     border-radius: 600px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -145,7 +150,7 @@ p img{
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    background: rgba(255, 255, 255, 0.07);
+    background-color: rgba(229, 231, 245, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     align-items: center;
@@ -177,7 +182,7 @@ p img{
 
 .credits{   
     color: rgb(110, 110, 110);
-    background: rgba(255, 255, 255, 0.02);
+    background-color: rgba(229, 231, 245, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     width: 100%;
@@ -195,20 +200,3 @@ p img{
 .githubLogo:hover{
     opacity: 0.6;
 }
-
-/* .downloadMessage{
-    display: flex;
-    justify-content: center;
-    padding: 8px;
-    color: rgb(0, 219, 69);
-    font-family: 'DM Sans', sans-serif;    font-weight:00;
-    font-size: 14px;
-    margin-top: 16px;
-    background: rgba(0, 150, 47, 0.1);
-    border: 1px solid rgb(0, 96, 30);
-    border-radius: 4px;
-}
-
-.hidden{
-    display: none;
-} */
