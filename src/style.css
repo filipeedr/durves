@@ -41,11 +41,12 @@ a{
 p{
     display: flex;
     justify-content: center;
+    margin: 0;
     gap: 8px;
 }
 
 p img{
-    width: 16px;
+    width: 14px;
 }
 
 .logo {
@@ -186,9 +187,10 @@ p img{
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     width: 100%;
+    padding: 8px 0px 8px 0px;
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .githubLogo{
