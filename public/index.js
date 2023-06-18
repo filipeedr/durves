@@ -3161,7 +3161,8 @@ const random = require("canvas-sketch-util/random");
 let canva;
 const sketch = ({
   width,
-  height
+  height,
+  exportFrame
 }) => {
   const cols = _settings.userSettings.cols;
   const rows = _settings.userSettings.rows;
@@ -3207,6 +3208,13 @@ const sketch = ({
     points = [];
     canva.update();
   });
+  document.getElementById("downloadDurves").addEventListener('click', () => {
+    exportFrame();
+    document.getElementById('downloadMessage').classList.toggle('hidden');
+    setTimeout(() => {
+      document.getElementById('downloadMessage').classList.toggle('hidden');
+    }, 4000);
+  });
   return ({
     context,
     width,
@@ -3243,7 +3251,7 @@ class Point {
     context.restore();
   }
 }
-canvasSketch(sketch, _settings.userSettings).then(instance => {
+canvasSketch(sketch, _settings.canvasSettings).then(instance => {
   canva = instance;
 });
 
@@ -3301,13 +3309,20 @@ exports.readWaves = readWaves;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.userSettings = void 0;
+exports.userSettings = exports.canvasSettings = void 0;
 var _inputReadFunctions = require("./inputReadFunctions.js");
+const canvasSettings = {
+  dimensions: [2160, 2160],
+  encoding: 'image/webp',
+  encodingQuality: 1,
+  pixelsPerInch: 300,
+  prefix: 'my-durves'
+};
+exports.canvasSettings = canvasSettings;
 const userSettings = {
-  dimensions: [1080, 1080],
-  cols: 72,
-  rows: 72,
-  size: 0.75,
+  cols: 80,
+  rows: 80,
+  size: 0.85,
   position: 0.5,
   roundSize: (0, _inputReadFunctions.readRoundSize)(),
   amplitude: (0, _inputReadFunctions.readAmplitude)(),

@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+body canvas{
+    width: 92vh !important;
+    height: 92vh !important;
+    padding-left: calc((100vw) / 10);
+    padding-right: calc((100vw) / 10);
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-right: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+a{
+    color: white;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+p img{
+    width: 16px;
+}
+
+.logo {
+    width: 100px;
+    border-radius: 4px;
+    margin-bottom: 64px;
+}
+
+.leftSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 390px;
+    margin: 32px;
+    padding: 32px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px
+}
+
+.label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.inputSlider{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    gap: 12px;
+    opacity: 0.6;
+    -webkit-transition: 0.3s;
+}
+
+.inputSlider:hover{
+    opacity: 1;
+}
+
+.inputSlider:last-child{
+    margin: 0;
+}
+
+.inputIcons{
+    width: 16px;
+}
+
+.labelSlider{
+    color: white;
+    font-family: 'DM Sans', sans-serif;    font-weight: 400;
+}
+
+.labelSlider{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.inputSlider input{
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.07);
+    cursor:ew-resize;
+    border-radius: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inputSlider input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background: rgb(255, 255, 255);
+    width: 12px;
+    height: 12px;
+    border-radius: 600px;
+}
+
+.leftSide button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+}
+
+.leftSide button:hover{
+        background: rgba(255, 255, 255, 0.04);
+}
+
+.leftSide button:active{
+    opacity: 0.7;
+}
+
+.leftSide button:first-child{
+    width: 64px;
+}
+
+.leftSide .buttons{
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.iconButton img{
+    width: 20px;
+}
+
+.credits{   
+    color: rgb(110, 110, 110);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.githubLogo{
+    width: 24px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+}
+
+.githubLogo:hover{
+    opacity: 0.6;
+}
+
+/* .downloadMessage{
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    color: rgb(0, 219, 69);
+    font-family: 'DM Sans', sans-serif;    font-weight:00;
+    font-size: 14px;
+    margin-top: 16px;
+    background: rgba(0, 150, 47, 0.1);
+    border: 1px solid rgb(0, 96, 30);
+    border-radius: 4px;
+}
+
+.hidden{
+    display: none;
+} */

@@ -1,12 +1,12 @@
 import {readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
-import {userSettings} from './settings.js';
+import {canvasSettings, userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");
 const random = require("canvas-sketch-util/random");
  
 let canva;
- 
-const sketch = ({ width, height }) => {
+
+const sketch = ({ width, height, exportFrame }) => {
 
   const cols = userSettings.cols;
   const rows = userSettings.rows;
@@ -63,6 +63,24 @@ const sketch = ({ width, height }) => {
     
     canva.update()
   });
+
+  document.getElementById("downloadDurves").addEventListener('click', () => { 
+  
+    exportFrame();
+
+    document.getElementById('downloadMessage').classList.toggle('hidden');
+
+    setTimeout(() => {
+      document.getElementById('downloadMessage').classList.toggle('hidden');
+    }, 4000);
+
+  });
+
+  document.getElementById("restartSettings").addEventListener('click', () => { 
+    
+    location.reload();
+
+  });
  
   return ({ context, width, height }) => {
     context.fillStyle = "black";
@@ -80,6 +98,7 @@ const sketch = ({ width, height }) => {
  
     context.restore();
   };
+
 };
  
 class Point {
@@ -101,6 +120,6 @@ class Point {
   }
 }
  
-canvasSketch(sketch, userSettings).then((instance) => {
+canvasSketch(sketch, canvasSettings).then((instance) => {
   canva = instance
 });
