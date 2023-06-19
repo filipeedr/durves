@@ -8,15 +8,18 @@ body{
     margin: 0;
     padding: 0;
     gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
     cursor: url("../src/assets/cursor.svg"), auto;
+    color: white;
 }
 
 body canvas{
     width: 92vh !important;
     height: 92vh !important;
-    margin-top: 32px;
-    margin-bottom: 32px;
-    margin-right: 32px;
+    margin: 32px 0px 32px 0px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
@@ -36,6 +39,7 @@ footer{
 }
 
 a{
+    display: flex;
     text-decoration: none;
     color: white;
     opacity: 1;
@@ -62,14 +66,23 @@ p img{
     border-radius: 4px;
 }
 
+.githubLogo{
+    width: 24px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+}
+
+.githubLogo:hover{
+    opacity: 0.6;
+}
+
 .leftSide{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     max-width: 340px;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin: 32px 0px 32px 0px;
     padding: 32px;
     height: auto;
     background-color: rgba(229, 231, 245, 0.03);
@@ -87,6 +100,10 @@ p img{
 
 .inputs:last-child{
     margin-bottom: 20px;
+}
+
+.inputIcons{
+    width: 16px;
 }
 
 .label{
@@ -116,29 +133,19 @@ p img{
     margin: 0;
 }
 
-.inputIcons{
-    width: 16px;
-}
-
-.labelSlider{
-    color: white;
-    font-family: 'DM Sans', sans-serif;    font-weight: 400;
-}
-
 .labelSlider{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 0px 4px 0px 4px;
 }
 
 .inputSlider input{
     -webkit-appearance: none;
     background-color: rgba(229, 231, 245, 0.07);
     cursor:ew-resize;
-    border-radius: 600px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 600px;
 }
 
 .inputSlider input::-webkit-slider-thumb{
@@ -149,16 +156,22 @@ p img{
     border-radius: 600px;
 }
 
+.leftSide .buttons{
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.iconButton img{
+    width: 20px;
+}
+
 .leftSide button{
     display: flex;
     justify-content: center;
     width: 100%;
     padding: 16px;
     color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
     background-color: rgba(229, 231, 245, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
@@ -179,16 +192,6 @@ p img{
     width: 64px;
 }
 
-.leftSide .buttons{
-    display: flex;
-    width: 100%;
-    gap: 8px;
-}
-
-.iconButton img{
-    width: 20px;
-}
-
 .credits{   
     color: rgb(110, 110, 110);
     background-color: rgba(229, 231, 245, 0.02);
@@ -196,17 +199,5 @@ p img{
     border-radius: 4px;
     width: 100%;
     padding: 8px 0px 8px 0px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
     font-size: 12px;
-}
-
-.githubLogo{
-    width: 24px;
-    opacity: 1;
-    -webkit-transition: 0.3s;
-}
-
-.githubLogo:hover{
-    opacity: 0.6;
 }
