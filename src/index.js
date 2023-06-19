@@ -70,17 +70,17 @@ const sketch = ({ width, height, exportFrame }) => {
 
   });
 
-  // document.getElementById("downloadDurves").addEventListener('click', () => { 
+  document.getElementById("downloadDurves").addEventListener('click', () => { 
   
-  //   exportFrame();
+    exportFrame();
 
-  //   document.getElementById('downloadMessage').classList.toggle('hidden');
+    // document.getElementById('downloadMessage').classList.toggle('hidden');
 
-  //   setTimeout(() => {
-  //     document.getElementById('downloadMessage').classList.toggle('hidden');
-  //   }, 4000);
+    // setTimeout(() => {
+    //   document.getElementById('downloadMessage').classList.toggle('hidden');
+    // }, 4000);
 
-  // });
+  });
  
   return ({ context, width, height }) => {
     context.fillStyle = "black";
