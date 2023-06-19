@@ -9,8 +9,8 @@ export const canvasSettings = {
 };
 
 export const userSettings = {
-  cols: 180,
-  rows: 180,
+  cols: 150,
+  rows: 150,
   size: 0.85,
   position: 0.5,
   roundSize: readRoundSize(),
