@@ -80,7 +80,7 @@ p img{
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 20px;
+    gap: 16px;
     margin-bottom: 20px;
 }
 
