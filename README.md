@@ -1,2 +1,1 @@
-# durves
-Created by https://twitter.com/filipeedr
+# Durves - A design pattern tool
