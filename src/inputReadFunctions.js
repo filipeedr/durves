@@ -1,3 +1,16 @@
+export const readMatrixSize = () => {
+  var slider = document.getElementById("matrixSizeSlider");
+  var output = document.getElementById("valueMatrixSize");
+ 
+  output.innerHTML = slider.value + " x " + slider.value;
+ 
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+ 
+  return slider.value;
+};
+
 export const readRoundSize = () => {
   var slider = document.getElementById("roundSizeSlider");
   var output = document.getElementById("valueRoundSize");

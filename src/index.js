@@ -1,4 +1,4 @@
-import {readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
+import {readMatrixSize, readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
 import {canvasSettings, userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");
@@ -6,25 +6,25 @@ const random = require("canvas-sketch-util/random");
  
 let canva;
 
+let points = [];
+
 const sketch = ({ width, height, exportFrame }) => {
 
-  const cols = userSettings.cols;
-  const rows = userSettings.rows;
-  const numCells = cols * rows;
+  let cols = userSettings.cols;
+  let rows = userSettings.rows;
+  let numCells = cols * rows;
  
   const gridWidth = width * userSettings.size;
   const gridHeight = width * userSettings.size;
  
-  const cellWidth = gridWidth / cols;
-  const cellHeight = gridHeight / rows;
+  let cellWidth = gridWidth / cols;
+  let cellHeight = gridHeight / rows;
  
-  const positionX = (width - gridWidth) * 0.5;
-  const positionY = (height - gridHeight) * 0.5;
+  let positionX = (width - gridWidth) * 0.5;
+  let positionY = (height - gridHeight) * 0.5;
 
   let x, y, noise;
 
-  let points = [];
- 
   const drawPoints = () => {
     for (let i = 0; i < numCells; i++) {
       x = (i % cols) * cellWidth;
@@ -35,6 +35,20 @@ const sketch = ({ width, height, exportFrame }) => {
       points.push(new Point({ x, y }));
     }
   };
+
+  document.getElementById("matrixSizeSlider").addEventListener("input", (e) => {
+    cols = Number(readMatrixSize());
+    rows = Number(readMatrixSize());
+
+    numCells = cols * rows;
+
+    cellWidth = gridWidth / cols;
+    cellHeight = gridHeight / rows;
+
+    points = []
+    
+    canva.update()
+  });
 
   document.getElementById("frequencySlider").addEventListener("input", (e) => {
       userSettings.frequency = readFrequency();
