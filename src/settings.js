@@ -1,7 +1,7 @@
 import {readMatrixSize, readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
 
 export const canvasSettings = {
-  dimensions: [4320, 4320],
+  dimensions: [2160, 2160],
   encoding: 'image/png',
   encodingQuality: 1,
   pixelsPerInch: 300,
