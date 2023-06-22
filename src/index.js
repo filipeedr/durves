@@ -1,4 +1,4 @@
-import {readMatrixSize, readRoundSize, readAmplitude, readWaves, readFrequency} from './inputReadFunctions.js';
+import {readMatrix, readRoundSize, readAmplitude, readWaves, readFrequency, readAspect} from './inputReadFunctions.js';
 import {canvasSettings, userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");
@@ -13,8 +13,8 @@ const sketch = async ({width, height, exportFrame }) => {
     let rows = userSettings.rows;
     let numCells = cols * rows;
    
-    const gridWidth = width * userSettings.size;
-    const gridHeight = width * userSettings.size;
+    let gridWidth = width * userSettings.size;
+    let gridHeight = width * userSettings.size;
    
     let cellWidth = gridWidth / cols;
     let cellHeight = gridHeight / rows;
@@ -24,6 +24,8 @@ const sketch = async ({width, height, exportFrame }) => {
   
     let x, y, noise;
     let points = [];
+
+    let transparency;
     
     const drawPoints = () => {
       for (let i = 0; i < numCells; i++) {
@@ -36,15 +38,32 @@ const sketch = async ({width, height, exportFrame }) => {
       }
     };
   
-    document.getElementById("matrixSizeSlider").addEventListener("input", (e) => {
-      cols = Number(readMatrixSize());
-      rows = Number(readMatrixSize());
+    document.getElementById("matrixSlider").addEventListener("input", (e) => {
+      cols = Number(readMatrix());
+      rows = Number(readMatrix());
   
       numCells = cols * rows;
   
       cellWidth = gridWidth / cols;
       cellHeight = gridHeight / rows;
   
+      points = []
+      
+      canva.update()
+    });
+
+    document.getElementById("aspectSlider").addEventListener("input", (e) => {
+      userSettings.size = readAspect();
+
+      gridWidth = width * userSettings.size;
+      gridHeight = width * userSettings.size;
+
+      cellWidth = gridWidth / cols;
+      cellHeight = gridHeight / rows;
+
+      positionX = (width - gridWidth) * 0.5;
+      positionY = (height - gridHeight) * 0.5;
+
       points = []
       
       canva.update()
@@ -84,16 +103,16 @@ const sketch = async ({width, height, exportFrame }) => {
   
     });
   
-    // document.getElementById("backgroundTransparency").addEventListener('click', () => { 
+    document.getElementById("backgroundTransparency").addEventListener('click', () => { 
   
-    //     if(document.getElementById("backgroundTransparency").checked == true){
-    //       transparency = true;
-    //     }
-    //     else{
-    //       transparency = false;
-    //     }
+        if(document.getElementById("backgroundTransparency").checked == true){
+          transparency = true;
+        }
+        else{
+          transparency = false;
+        }
   
-    // });
+    });
   
     document.getElementById("downloadDurves").addEventListener('click', () => { 
       
@@ -111,6 +130,10 @@ const sketch = async ({width, height, exportFrame }) => {
 
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
+
+    if(transparency){
+      context.clearRect(0, 0, width, height);
+    }
 
     context.save();
       context.translate(positionX, positionY);

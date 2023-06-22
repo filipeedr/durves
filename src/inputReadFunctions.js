@@ -1,8 +1,21 @@
-export const readMatrixSize = () => {
-  var slider = document.getElementById("matrixSizeSlider");
-  var output = document.getElementById("valueMatrixSize");
+export const readMatrix = () => {
+  var slider = document.getElementById("matrixSlider");
+  var output = document.getElementById("valueMatrix");
  
   output.innerHTML = slider.value + " x " + slider.value;
+ 
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+ 
+  return slider.value;
+};
+
+export const readAspect = () => {
+  var slider = document.getElementById("aspectSlider");
+  var output = document.getElementById("valueAspect");
+ 
+  output.innerHTML = slider.value;
  
   slider.oninput = function () {
     output.innerHTML = this.value;

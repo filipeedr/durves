@@ -22,13 +22,14 @@ body canvas{
     margin: 32px 0px 32px 0px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    
 }
 
 header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 footer{
@@ -120,7 +121,7 @@ label{
 .input{
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 14px;
     background-color: rgba(229, 231, 245, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
