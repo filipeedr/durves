@@ -1,4 +1,4 @@
-import {readMatrix, readRoundSize, readAmplitude, readWaves, readFrequency, readAspect} from './inputReadFunctions.js';
+import {readMatrix, readRoundSize, readAmplitude, readWaves, readFrequency, readAspect, readColor} from './inputReadFunctions.js';
 import {canvasSettings, userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");
@@ -6,6 +6,7 @@ const random = require("canvas-sketch-util/random");
 const svg = require("./canvas-to-sketch.js");
 
 let canva;
+let color = userSettings.color;
 
 const sketch = async ({width, height, exportFrame }) => {
   
@@ -25,7 +26,7 @@ const sketch = async ({width, height, exportFrame }) => {
     let x, y, noise;
     let points = [];
 
-    let transparency;
+    let transparency = userSettings.transparency;
     
     const drawPoints = () => {
       for (let i = 0; i < numCells; i++) {
@@ -37,6 +38,14 @@ const sketch = async ({width, height, exportFrame }) => {
         points.push(new Point({ x, y }));
       }
     };
+
+    document.getElementById("colorpicker").addEventListener("input", (e) => {
+      color = String(readColor());
+  
+      points = []
+      
+      canva.update()
+    });
   
     document.getElementById("matrixSlider").addEventListener("input", (e) => {
       cols = Number(readMatrix());
@@ -96,21 +105,21 @@ const sketch = async ({width, height, exportFrame }) => {
       
       canva.update()
     });
+
+    // document.getElementById("backgroundTransparency").addEventListener('click', () => { 
+  
+    //   if(document.getElementById("backgroundTransparency").checked == true){
+    //     transparency = true;
+    //   }
+    //   else{
+    //     transparency = false;
+    //   }
+
+    // });
   
     document.getElementById("restartSettings").addEventListener('click', () => { 
       
       location.reload();
-  
-    });
-  
-    document.getElementById("backgroundTransparency").addEventListener('click', () => { 
-  
-        if(document.getElementById("backgroundTransparency").checked == true){
-          transparency = true;
-        }
-        else{
-          transparency = false;
-        }
   
     });
   
@@ -157,7 +166,7 @@ class Point {
     draw(context, roundSize) {
       context.save();
       context.translate(this.x, this.y);
-      context.fillStyle = "white";
+      context.fillStyle = String(color);
    
       context.beginPath();
       context.arc(0, 0, roundSize, 0, Math.PI * 2);

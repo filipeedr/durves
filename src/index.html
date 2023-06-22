@@ -27,7 +27,10 @@
         <div class="inputs">
           <header>
             <img class="logo" src="../src/assets/durves-logo.svg">
-            <a href="https://github.com/filipeedr/durves" target="_blank"><img class="githubLogo" src="../src/assets/github.svg"></a>
+            <div class="headerAction">
+              <a href="https://github.com/filipeedr/durves" target="_blank"><img class="githubLogo" src="../src/assets/github.svg"></a>
+              <input type="color" value="#FFFFFF" id="colorpicker" alt="Color picker">
+            </div>
           </header>
           <div class="input">
             <div class="labelValue">
@@ -89,12 +92,12 @@
             </div>
             <input type="range" min="0" max="0.005" step="0.0001" value="0.0009" id="frequencySlider" alt="Frequency slider">
           </div>
-          <div class="input">
+          <!-- <div class="input">
             <div class="label">
               <input type="checkbox" id="backgroundTransparency" alt="Background transparency">
               <label for="backgroundTransparency">Transparent background</label>
             </div>
-          </div>
+          </div> -->
         </div>
         <footer>
           <div class="buttons">

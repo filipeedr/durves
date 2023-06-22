@@ -1,4 +1,4 @@
-import {readMatrix, readRoundSize, readAmplitude, readWaves, readFrequency, readAspect} from './inputReadFunctions.js';
+import {readMatrix, readRoundSize, readAmplitude, readWaves, readFrequency, readAspect, readColor} from './inputReadFunctions.js';
 
 export const canvasSettings = {
   dimensions: [2160, 2160],
@@ -13,6 +13,8 @@ export const userSettings = {
   rows: readMatrix(),
   size: readAspect(),
   position: 0.5,
+  color: readColor(),
+  transparency: true,
   roundSize: readRoundSize(),
   amplitude: readAmplitude(),
   waves: readWaves(),

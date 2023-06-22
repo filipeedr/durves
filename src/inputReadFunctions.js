@@ -1,3 +1,9 @@
+export const readColor = () => {
+  var color = document.getElementById("colorpicker");
+
+  return color.value;
+};
+
 export const readMatrix = () => {
   var slider = document.getElementById("matrixSlider");
   var output = document.getElementById("valueMatrix");
