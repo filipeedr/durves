@@ -23,21 +23,33 @@ const sketch = async ({width, height, exportFrame }) => {
     let positionX = (width - gridWidth) * 0.5;
     let positionY = (height - gridHeight) * 0.5;
   
-    let x, y, noise;
     let points = [];
 
     let transparency = userSettings.transparency;
     
     const drawPoints = () => {
+      const waves = userSettings.waves;
+      const frequency = userSettings.frequency;
+      const amplitude = userSettings.amplitude;
+    
+      let x = 0;
+      let y = 0;
+    
       for (let i = 0; i < numCells; i++) {
-        x = (i % cols) * cellWidth;
-        y = Math.floor(i / cols) * cellHeight;
-        noise = random.noise2D(x * userSettings.waves, y * userSettings.waves, userSettings.frequency, userSettings.amplitude);
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+    
+        x = col * cellWidth;
+        y = row * cellHeight;
+    
+        const noise = random.noise2D(x * waves, y * waves, frequency, amplitude);
         x += noise;
         y += noise;
+    
         points.push(new Point({ x, y }));
       }
     };
+    
 
     document.getElementById("colorpicker").addEventListener("input", (e) => {
       color = String(readColor());
@@ -158,24 +170,26 @@ const sketch = async ({width, height, exportFrame }) => {
 };
 
 class Point {
-    constructor({ x, y}) {
-      this.x = x;
-      this.y = y;
-    }
-   
-    draw(context, roundSize) {
-      context.save();
-      context.translate(this.x, this.y);
+  constructor({ x, y }) {
+    this.x = x;
+    this.y = y;
+  }
+
+  draw(context, roundSize) {
+    const { x, y } = this;
+    const halfRoundSize = roundSize * 0.5;
+    const doublePI = Math.PI * 2;
+
+    context.save();
       context.fillStyle = String(color);
-   
       context.beginPath();
-      context.arc(0, 0, roundSize, 0, Math.PI * 2);
+      context.arc(x, y, halfRoundSize, 0, doublePI);
       context.fill();
       context.closePath();
-      context.restore();
-    }
+    context.restore();
   }
-   
-  canvasSketch(sketch, canvasSettings).then((instance) => {
-    canva = instance;
-  });
+}
+
+canvasSketch(sketch, canvasSettings).then((instance) => {
+  canva = instance;
+});

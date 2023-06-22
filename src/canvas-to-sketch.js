@@ -29,9 +29,7 @@ function serialize(draw, props) {
     canvasHeight,
     width,
     height,
-    units,
-    scaleX,
-    scaleY
+    units
   } = props;
   const context = new Canvas2SVG(canvasWidth, canvasHeight);
   draw({ ...props, context });
