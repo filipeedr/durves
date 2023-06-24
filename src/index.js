@@ -8,7 +8,9 @@ const svg = require("./canvas-to-sketch.js");
 let canva;
 let color = userSettings.color;
 
-const sketch = async ({width, height, exportFrame }) => {
+const canvasSection = document.querySelector('.center');
+
+export const sketch = async ({context, width, height, exportFrame }) => {
   
     let cols = userSettings.cols;
     let rows = userSettings.rows;
@@ -26,6 +28,15 @@ const sketch = async ({width, height, exportFrame }) => {
     let points = [];
 
     let transparency = userSettings.transparency;
+
+    var size = document.querySelectorAll("#aspectSlider, #valueAspect");
+    var dotRadius = document.querySelectorAll("#roundSizeSlider, #valueRoundSize");
+    var amplitude = document.querySelectorAll("#amplitudeSlider, #valueAmplitude");
+    var waves = document.querySelectorAll("#wavesSlider, #valueWaves");
+    var frequency = document.querySelectorAll("#frequencySlider, #valueFrequency");
+
+    const canvasWrapper = document.createElement('div');
+    canvasWrapper.appendChild(context.canvas);
     
     const drawPoints = () => {
       const waves = userSettings.waves;
@@ -49,16 +60,7 @@ const sketch = async ({width, height, exportFrame }) => {
         points.push(new Point({ x, y }));
       }
     };
-    
 
-    document.getElementById("colorpicker").addEventListener("input", (e) => {
-      color = String(readColor());
-  
-      points = []
-      
-      canva.update()
-    });
-  
     document.getElementById("matrixSlider").addEventListener("input", (e) => {
       cols = Number(readMatrix());
       rows = Number(readMatrix());
@@ -73,61 +75,68 @@ const sketch = async ({width, height, exportFrame }) => {
       canva.update()
     });
 
-    document.getElementById("aspectSlider").addEventListener("input", (e) => {
-      userSettings.size = readAspect();
+    size.forEach(function(size) {
+      size.addEventListener("input", function(e) {
+        userSettings.size = readAspect();
+    
+        gridWidth = width * userSettings.size;
+        gridHeight = width * userSettings.size;
+    
+        cellWidth = gridWidth / cols;
+        cellHeight = gridHeight / rows;
+    
+        positionX = (width - gridWidth) * 0.5;
+        positionY = (height - gridHeight) * 0.5;
+    
+        points = [];
+    
+        canva.update();
+      });
+    });
 
-      gridWidth = width * userSettings.size;
-      gridHeight = width * userSettings.size;
-
-      cellWidth = gridWidth / cols;
-      cellHeight = gridHeight / rows;
-
-      positionX = (width - gridWidth) * 0.5;
-      positionY = (height - gridHeight) * 0.5;
-
+    document.getElementById("colorpicker").addEventListener("input", (e) => {
+      color = String(readColor());
+  
       points = []
       
       canva.update()
     });
-  
-    document.getElementById("frequencySlider").addEventListener("input", (e) => {
+
+    dotRadius.forEach(function(dotRadius) {
+      dotRadius.addEventListener("input", function(e) {
+        userSettings.roundSize = readRoundSize();
+        points = []
+      
+        canva.update()
+      });
+    });
+
+    amplitude.forEach(function(amplitude) {
+      amplitude.addEventListener("input", function(e) {
+        userSettings.amplitude = readAmplitude();
+        points = []
+      
+        canva.update()
+      });
+    });
+
+    waves.forEach(function(waves) {
+      waves.addEventListener("input", function(e) {
+        userSettings.waves = readWaves();
+        points = []
+      
+        canva.update()
+      });
+    });
+
+    frequency.forEach(function(frequency) {
+      frequency.addEventListener("input", function(e) {
         userSettings.frequency = readFrequency();
         points = []
         
         canva.update()
       });
-  
-    document.getElementById("roundSizeSlider").addEventListener("input", (e) => {
-      userSettings.roundSize = readRoundSize();
-      points = []
-      
-      canva.update()
     });
-  
-    document.getElementById("amplitudeSlider").addEventListener("input", (e) => {
-      userSettings.amplitude = readAmplitude();
-      points = []
-      
-      canva.update()
-    });
-  
-    document.getElementById("wavesSlider").addEventListener("input", (e) => {
-      userSettings.waves = readWaves();
-      points = []
-      
-      canva.update()
-    });
-
-    // document.getElementById("backgroundTransparency").addEventListener('click', () => { 
-  
-    //   if(document.getElementById("backgroundTransparency").checked == true){
-    //     transparency = true;
-    //   }
-    //   else{
-    //     transparency = false;
-    //   }
-
-    // });
   
     document.getElementById("restartSettings").addEventListener('click', () => { 
       
@@ -139,15 +148,10 @@ const sketch = async ({width, height, exportFrame }) => {
       
       exportFrame();
   
-      // document.getElementById('downloadMessage').classList.toggle('hidden');
-  
-      // setTimeout(() => {
-      //   document.getElementById('downloadMessage').classList.toggle('hidden');
-      // }, 4000);
-  
     });
 
   return svg(({ context, width, height }) => {
+    
 
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
@@ -165,6 +169,10 @@ const sketch = async ({width, height, exportFrame }) => {
         point.draw(context, userSettings.roundSize);
       });
     context.restore();
+
+    canvasSection.innerHTML = '';
+    canvasSection.appendChild(canvasWrapper);
+    // canvasSection.appendChild(context.canvas);
 
   });
 };
