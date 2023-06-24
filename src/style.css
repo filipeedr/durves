@@ -124,15 +124,16 @@ label{
 input[type=number]{
     -webkit-appearance: none;
     display: flex;
+    flex-direction: row;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
     outline: none;
     text-decoration: none;
-    flex-direction: row;
+    text-align: right;
     align-items: center;
-    padding: 4px 8px 4px 8px;
-    background-color: #35333B;
+    padding-right: 4px;
+    background-color: transparent;
     color: #B4B2C0;
     border: none;
     border-radius: 600px;
@@ -276,7 +277,6 @@ input[type="color"]::-webkit-color-swatch {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0px 4px 0px 4px;
 }
 
 .labelValue span{
@@ -301,6 +301,7 @@ input[type="color"]::-webkit-color-swatch {
     cursor:ew-resize;
     border: 1px solid #3B3840;
     border-radius: 600px;
+    padding-right: 4px;
 }
 
 .card input::-webkit-slider-thumb{
@@ -314,7 +315,6 @@ input[type="color"]::-webkit-color-swatch {
 .card input[type=checkbox]{
     cursor:pointer;
 }
-
 
 .credits{   
     color: #A3A6A7;
