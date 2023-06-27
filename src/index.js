@@ -7,10 +7,11 @@ const svg = require("./canvas-to-sketch.js");
 
 let canva;
 let color = userSettings.color;
+export let download = {png: false, svg: false};
 
 const canvasSection = document.querySelector('.center');
 
-export const sketch = async ({context, width, height, exportFrame }) => {
+const sketch = async ({context, width, height, exportFrame }) => {
   
     let cols = userSettings.cols;
     let rows = userSettings.rows;
@@ -144,15 +145,21 @@ export const sketch = async ({context, width, height, exportFrame }) => {
   
     });
   
-    document.getElementById("downloadDurves").addEventListener('click', () => { 
-      
+    document.getElementById("downloadPNG").addEventListener('click', () => { 
+
+      download.png = true;
       exportFrame();
   
     });
 
+    document.getElementById("downloadSVG").addEventListener('click', () => { 
+      
+      download.svg = true;
+      exportFrame();
+    });
+
   return svg(({ context, width, height }) => {
     
-
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
 
@@ -163,12 +170,16 @@ export const sketch = async ({context, width, height, exportFrame }) => {
     context.save();
       context.translate(positionX, positionY);
       context.translate(cellWidth * 0.5, cellHeight * 0.5);
+      
       drawPoints();
 
       points.forEach((point) => {
         point.draw(context, userSettings.roundSize);
       });
+      
     context.restore();
+
+    context.downloadSVG = true;
 
     canvasSection.innerHTML = '';
     canvasSection.appendChild(canvasWrapper);

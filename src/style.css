@@ -61,6 +61,10 @@ canvas{
     aspect-ratio: 1/1 !important;
 }
 
+section a{
+    
+}
+
 footer{
     display: flex;
     flex-direction: column;
@@ -174,7 +178,7 @@ input[type="color"]::-webkit-color-swatch {
 
 .center div{
     display: flex;
-    flex-direction: col;
+    flex-direction: column;
     align-items: center;
     width: 95%;
     height: 100%;

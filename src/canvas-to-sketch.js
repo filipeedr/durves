@@ -1,7 +1,10 @@
+import { download } from "./index.js";
+
 const Canvas2SVG = require("canvas2svg");
 const Color = require("canvas-sketch-util/color");
 
 module.exports = canvasToSVG;
+
 function canvasToSVG(sketch) {
   const obj = typeof sketch === "function" ? {} : sketch;
   const render = typeof sketch === "function" ? sketch : obj.render;
@@ -10,11 +13,17 @@ function canvasToSVG(sketch) {
     render(props) {
       render(props);
       if (props.exporting && !props.recording) {
-        return [props.canvas, serialize(render, props)];
+        if (download.png == true) {
+          return [props.canvas, download.png = false];
+        }
+        if (download.svg == true) {
+          return [serialize(render, props), download.svg = false];
+        }
+        };
       }
     }
   };
-}
+
 
 function fix(node, name) {
   if (!node.hasAttribute(name) || !node.getAttribute(name)) return;
@@ -31,16 +40,22 @@ function serialize(draw, props) {
     height,
     units
   } = props;
+
   const context = new Canvas2SVG(canvasWidth, canvasHeight);
+
   draw({ ...props, context });
   const svg = context.getSvg().cloneNode(true);
+  
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  
   [...svg.querySelectorAll("*")].forEach(node => {
     fix(node, "fill");
     fix(node, "stroke");
   });
+
   svg.setAttribute("width", width + units);
   svg.setAttribute("height", height + units);
+
   return {
     data: new XMLSerializer().serializeToString(svg),
     extension: ".svg"

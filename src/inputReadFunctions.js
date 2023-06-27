@@ -56,12 +56,12 @@ export const readAmplitude = () => {
   return slider.value;
 };
 
-export const readFrequency = () => {
-  var slider = document.getElementById("frequencySlider");
-  var output = document.getElementById("valueFrequency");
+export const readWaves = () => {
+  var slider = document.getElementById("wavesSlider");
+  var output = document.getElementById("valueWaves");
  
   output.value = slider.value;
- 
+
   slider.oninput = function () {
     output.value = this.value;
   };
@@ -69,12 +69,12 @@ export const readFrequency = () => {
   return slider.value;
 };
 
-export const readWaves = () => {
-  var slider = document.getElementById("wavesSlider");
-  var output = document.getElementById("valueWaves");
+export const readFrequency = () => {
+  var slider = document.getElementById("frequencySlider");
+  var output = document.getElementById("valueFrequency");
  
   output.value = slider.value;
-
+ 
   slider.oninput = function () {
     output.value = this.value;
   };
