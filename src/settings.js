@@ -5,7 +5,7 @@ export const canvasSettings = {
   encoding: 'image/png',
   encodingQuality: 1,
   pixelsPerInch: 300,
-  prefix: 'my-durves'
+  name: 'my-durves-image'
 };
 
 export const userSettings = {

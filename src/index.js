@@ -3,11 +3,13 @@ import {canvasSettings, userSettings} from './settings.js';
 
 const canvasSketch = require("canvas-sketch");
 const random = require("canvas-sketch-util/random");
-const svg = require("./canvas-to-sketch.js");
+const { optimize } = require("svgo");
+
 
 let canva;
 let color = userSettings.color;
-export let download = {png: false, svg: false};
+let svgFile = '';
+let svgPoints = '';
 
 const canvasSection = document.querySelector('.center');
 
@@ -18,7 +20,7 @@ const sketch = async ({context, width, height, exportFrame }) => {
     let numCells = cols * rows;
    
     let gridWidth = width * userSettings.size;
-    let gridHeight = width * userSettings.size;
+    let gridHeight = height * userSettings.size;
    
     let cellWidth = gridWidth / cols;
     let cellHeight = gridHeight / rows;
@@ -46,7 +48,7 @@ const sketch = async ({context, width, height, exportFrame }) => {
     
       let x = 0;
       let y = 0;
-    
+
       for (let i = 0; i < numCells; i++) {
         const col = i % cols;
         const row = Math.floor(i / cols);
@@ -54,12 +56,16 @@ const sketch = async ({context, width, height, exportFrame }) => {
         x = col * cellWidth;
         y = row * cellHeight;
     
-        const noise = random.noise2D(x * waves, y * waves, frequency, amplitude);
+        const noise = Math.round(random.noise2D(x * waves, y * waves, frequency, amplitude));
         x += noise;
         y += noise;
     
         points.push(new Point({ x, y }));
       }
+      
+      svgPoints = points.map(point => point.toSVG()).join('');
+      svgFile = `<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${width} ${height}">${svgPoints}</svg>`;
+      
     };
 
     document.getElementById("matrixSlider").addEventListener("input", (e) => {
@@ -79,7 +85,7 @@ const sketch = async ({context, width, height, exportFrame }) => {
     size.forEach(function(size) {
       size.addEventListener("input", function(e) {
         userSettings.size = readAspect();
-    
+
         gridWidth = width * userSettings.size;
         gridHeight = width * userSettings.size;
     
@@ -147,18 +153,30 @@ const sketch = async ({context, width, height, exportFrame }) => {
   
     document.getElementById("downloadPNG").addEventListener('click', () => { 
 
-      download.png = true;
       exportFrame();
   
     });
 
     document.getElementById("downloadSVG").addEventListener('click', () => { 
+
+      const svgOptimizer = optimize(svgFile);
+      const optimizedSvg = svgOptimizer.data;
       
-      download.svg = true;
-      exportFrame();
+      const blob = new Blob([optimizedSvg], { type: "image/svg+xml" });
+  
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "my-durves-vector.svg";
+      
+      a.click();
+      
+      URL.revokeObjectURL(url);
+
     });
 
-  return svg(({ context, width, height }) => {
+  return (({ context, width, height }) => {
     
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
@@ -170,7 +188,7 @@ const sketch = async ({context, width, height, exportFrame }) => {
     context.save();
       context.translate(positionX, positionY);
       context.translate(cellWidth * 0.5, cellHeight * 0.5);
-      
+
       drawPoints();
 
       points.forEach((point) => {
@@ -179,9 +197,6 @@ const sketch = async ({context, width, height, exportFrame }) => {
       
     context.restore();
 
-    context.downloadSVG = true;
-
-    canvasSection.innerHTML = '';
     canvasSection.appendChild(canvasWrapper);
     // canvasSection.appendChild(context.canvas);
 
@@ -207,6 +222,11 @@ class Point {
       context.closePath();
     context.restore();
   }
+
+  toSVG() {
+    return `<circle cx="${this.x}" cy="${this.y}" r="${userSettings.roundSize/2}" fill="${color}" />`;
+  }
+  
 }
 
 canvasSketch(sketch, canvasSettings).then((instance) => {
