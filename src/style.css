@@ -8,7 +8,7 @@
 
 body{
     display: grid;
-    background-color: #0E0D0F;
+    background-color: #141414;
     -webkit-font-smoothing: antialiased;
     margin: 16px;
     padding: 0;
@@ -32,13 +32,13 @@ nav{
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    background-color: #18171A;
+    background-color: #1A1A1A;
     border-radius: 8px;
-    border: 1px solid #333038;
+    border: 1px solid #202020;
 }
 
 main{
-    height: 88vh;
+    height: 90vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,9 +55,7 @@ header{
 }
 
 canvas{
-    width: 100% !important;
     height: auto !important;
-    max-height: 100%;
     aspect-ratio: 1/1 !important;
 }
 
@@ -70,7 +68,7 @@ footer{
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 24px 16px;
-    border-top: 1px solid #333038;
+    border-top: 1px solid #202020;
     gap: 8px;
 }
 
@@ -81,13 +79,13 @@ button{
     gap: 8px;
     margin: 0;
     padding: 12px 16px 12px 16px;
-    background-color: #242328;
+    background-color: #2C2C2C;
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 100%;
-    border: 1px solid #333038;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
     -webkit-transition: 0.3s;
@@ -196,17 +194,13 @@ input[type="color"]::-webkit-color-swatch {
     gap: 8px;
 }
 
-.primary:hover{
-    border: 1px solid #46424E;
-}
-
 .secondary{
-    background-color: #18171A;
+    background-color: #2C2C2C;
     border: none;
 }
 
-.secondary:hover{
-    background-color: #242328;
+.primary:hover, .secondary:hover{
+    background-color: #1E1E1E;
 }
 
 .sidebar{
@@ -214,15 +208,15 @@ input[type="color"]::-webkit-color-swatch {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #18171A;
-    border: 1px solid #333038;
+    background-color: #181818;
+    border: 1px solid #202020;
     border-radius: 8px;
     gap: 24px;
 }
 
 .sidebarTitle{
     padding: 16px;
-    border-bottom: 1px solid #333038;
+    border-bottom: 1px solid #202020;
 }
 
 .sidebarContent{
@@ -236,8 +230,8 @@ input[type="color"]::-webkit-color-swatch {
     display: flex;
     flex-direction: column;
     padding: 14px 16px 14px 16px;
-    background-color: #242328;
-    border: 1px solid #333038;
+    background-color: #1e1e1e;
+
     border-radius: 8px;
     gap: 16px;
 }
@@ -302,9 +296,9 @@ input[type="color"]::-webkit-color-swatch {
 
 .card input[type=range]{
     -webkit-appearance: none;
-    background-color: #2B2A30;
+    background-color: #171717;
     cursor:ew-resize;
-    border: 1px solid #3B3840;
+
     border-radius: 600px;
 }
 
